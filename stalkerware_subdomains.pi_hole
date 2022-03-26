@@ -1,3 +1,9 @@
+ # Title: StalkerwareDNS/Hosts
+# Automaticly generated list of stalkerware DNS entries for the pi-hole
+# https://github.com/GIJack/stalkerware-urls/blob/shove_it_in_your_pi-hole/shove_it_in_your_pi-hole.py
+# pi-hole: https://github.com/pi-hole/pi-hole
+
+
 0.0.0.0 admin.thetruthspy.com
 0.0.0.0 ambientrecord.thetruthspy.com
 0.0.0.0 android.thetruthspy.com

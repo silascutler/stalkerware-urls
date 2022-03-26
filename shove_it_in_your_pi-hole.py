@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-prog_ver = "0.0.1"
-prog_desc='''Takes a list of domains, one per line, with # as the comment char
+prog_ver  = "0.0.1"
+prog_desc ='''Takes a list of domains, one per line, with # as the comment char
 and convert it into a format that can be directly added to the pi-hole software
 
 pi-hole is a DNS server implementation that blocks advertisers based on DNS list
@@ -16,6 +16,13 @@ https://www.gnu.org/licenses/gpl-3.0.txt
 config = {
     'null_addr' : "0.0.0.0"
 }
+
+output_header = '''# Title: StalkerwareDNS/Hosts
+# Automaticly generated list of stalkerware DNS entries for the pi-hole
+# https://github.com/GIJack/stalkerware-urls/blob/shove_it_in_your_pi-hole/shove_it_in_your_pi-hole.py
+# pi-hole: https://github.com/pi-hole/pi-hole
+
+'''
 
 import sys
 import argparse
@@ -83,8 +90,9 @@ def write_output(out_lines,out_file):
         out_obj  = open(out_file,'w')
     except:
         exit_with_error(1,"Could not write to output file: " + out_file + " Please check directory exists and permissions allow writing")
-    
-    out_obj.write(out_lines)
+
+    file_out = output_header + '\n' + out_lines
+    out_obj.write(file_out)
     out_obj.close()
         
 def main():
