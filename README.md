@@ -29,6 +29,6 @@ if you forked this, substitute "GIJack" with your github username.
 
 Maintain the proccessed list, everytime you make a change
 
-'''
+```
 /shove\_it\_in\_your\_pi-hole.py stalkerware\_subdomains.txt -o stalkerware\_subdomains.pi\_hole
-'''
+```
