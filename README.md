@@ -25,6 +25,11 @@ under "Group Management" -> "Adlists". add the following as the URL:
 ```
 https://raw.githubusercontent.com/GIJack/stalkerware-urls/shove_it_in_your_pi-hole/stalkerware_subdomains.pi_hole
 ```
+
+then under Tools -> Update Gravity
+
+Hit the "Update" button to actually pull the list.
+
 if you forked this, substitute "GIJack" with your github username.
 
 Maintain the proccessed list, everytime you make a change
@@ -32,3 +37,4 @@ Maintain the proccessed list, everytime you make a change
 ```
 shove_it_in_your_pi-hole.py stalkerware_subdomains.txt -o stalkerware_subdomains.pi_hole
 ```
+and then update gravity again(see above)
