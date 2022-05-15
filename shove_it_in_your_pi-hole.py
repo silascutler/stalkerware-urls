@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-prog_ver  = "0.0.2"
+prog_ver  = "0.0.3"
 prog_desc ='''Takes a list of domains, one per line, with # as the comment char
 and convert it into a format that can be directly added to the pi-hole software
 
@@ -134,9 +134,12 @@ def main():
             continue
         # Strip comments
         out_lines += strip_comments(in_lines)
-        
+
+    line_count = len(out_lines)
     # Convert and add to list
     out_lines = convert_to_pihole(out_lines)
     # Write output
     write_output(out_lines,out_file)
+    out_msg = "DONE, proccessed " + str(line_count) + " domains."
+    message(out_msg)
 main()
