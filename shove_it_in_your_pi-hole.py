@@ -83,7 +83,7 @@ def get_lines_from_file(input_file):
     file_lines = in_obj.read()
     in_obj.close()
 
-    file_lines = file_lines.split('\n')
+    file_lines = file_lines.split()
     return file_lines
 
 def write_output(out_lines,out_file):
