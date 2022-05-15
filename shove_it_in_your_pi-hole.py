@@ -30,12 +30,12 @@ import argparse
 class color:
     reset='\033[0m'
     bold='\033[01m'
-    brightred='\033[95m'
-    brightyellow='\033[93m'
+    red='\033[31m'
+    yellow='\033[93m'
 
 def exit_with_error(exit_code,message):
     '''print error message to STDERR and exit with code'''
-    out_message = "shoveit_in_your_pihole.py: " + color.brightred + color.bold + "ERROR: " + color.reset + message
+    out_message = "shoveit_in_your_pihole.py: " + color.red + color.bold + "ERROR: " + color.reset + message
     print(out_message,file=sys.stderr)
     exit(exit_code)
 
@@ -51,7 +51,7 @@ def message(message):
     
 def warn(message):
     '''print a warning message'''
-    out_message = "shoveit_in_your_pihole.py: " + color.brightyellow  + color.bold + "WARN: " + color.reset + message
+    out_message = "shoveit_in_your_pihole.py: " + color.yellow  + color.bold + "WARN: " + color.reset + message
     print(out_message,file=sys.stderr)
 
 def strip_comments(in_lines):
