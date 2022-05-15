@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-prog_ver  = "0.0.1"
+prog_ver  = "0.0.2"
 prog_desc ='''Takes a list of domains, one per line, with # as the comment char
 and convert it into a format that can be directly added to the pi-hole software
 
