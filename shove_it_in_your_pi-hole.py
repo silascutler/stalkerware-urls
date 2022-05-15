@@ -35,7 +35,7 @@ class color:
 
 def exit_with_error(exit_code,message):
     '''print error message to STDERR and exit with code'''
-    out_message = "shoveit_in_your_pihole.py: " + color.brightred + "ERROR: " + color.reset + message
+    out_message = "shoveit_in_your_pihole.py: " + color.brightred + color.bold + "ERROR: " + color.reset + message
     print(out_message,file=sys.stderr)
     exit(exit_code)
 
@@ -51,7 +51,7 @@ def message(message):
     
 def warn(message):
     '''print a warning message'''
-    out_message = "shoveit_in_your_pihole.py: " + color.brightyellow + "WARN: " + color.reset + message
+    out_message = "shoveit_in_your_pihole.py: " + color.brightyellow  + color.bold + "WARN: " + color.reset + message
     print(out_message,file=sys.stderr)
 
 def strip_comments(in_lines):
@@ -129,7 +129,7 @@ def main():
         try:
             in_lines  = get_lines_from_file(in_file)
         except:
-            warn("Could not read file: " + input_file + " Please ensure this file exists and you have read permissions")
+            warn("Could not read file: " + in_file)
             WARNS += 1
             continue
         # Strip comments
@@ -140,6 +140,11 @@ def main():
     out_lines = convert_to_pihole(out_lines)
     # Write output
     write_output(out_lines,out_file)
-    out_msg = "DONE, proccessed " + str(line_count) + " domains."
+    
+    # Generate done message
+    out_msg = "DONE, proccessed " + str(line_count) + " domains"
+    if WARNS > 0:
+        out_msg += ", " + str(WARNS) + " File(s) could not be read"
+
     message(out_msg)
 main()
