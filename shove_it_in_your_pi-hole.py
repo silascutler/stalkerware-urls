@@ -14,12 +14,15 @@ https://www.gnu.org/licenses/gpl-3.0.txt
 '''
 
 defaults = {
-    'null_addr' : "0.0.0.0",
-    'title'      : "StalkerwareDNS/Hosts",
+    'null_addr'   : "0.0.0.0",
+    'title'       : "StalkerwareDNS/Hosts",
+    'description' : "Automaticly Generated Hosts File For Pi-Hole Generated From Stalkerware Domain List"
 }
 
 output_header = '''# Title: +TITLE+
-# Hostfile generated from a text file with domain list, for use with a pi-hole
+# Description: +DESCRIPTION+
+# 
+# Generated with:
 # https://github.com/GIJack/stalkerware-urls/blob/shove_it_in_your_pi-hole/shove_it_in_your_pi-hole.py
 # pi-hole: https://github.com/pi-hole/pi-hole
 
@@ -111,6 +114,7 @@ def main():
     # parse file header
     global output_header
     output_header = output_header.replace('+TITLE+',defaults['title'])
+    output_header = output_header.replace('+DESCRIPTION+',defaults['description'])
 
     ## Sanity checks, and variable proccessing
     if args.version == True:
