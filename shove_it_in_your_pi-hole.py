@@ -13,12 +13,13 @@ https://www.gnu.org/licenses/gpl-3.0.txt
 
 '''
 
-config = {
-    'null_addr' : "0.0.0.0"
+defaults = {
+    'null_addr' : "0.0.0.0",
+    'title'      : "StalkerwareDNS/Hosts",
 }
 
-output_header = '''# Title: StalkerwareDNS/Hosts
-# Automaticly generated list of stalkerware DNS entries for the pi-hole
+output_header = '''# Title: +TITLE+
+# Hostfile generated from a text file with domain list, for use with a pi-hole
 # https://github.com/GIJack/stalkerware-urls/blob/shove_it_in_your_pi-hole/shove_it_in_your_pi-hole.py
 # pi-hole: https://github.com/pi-hole/pi-hole
 
@@ -71,7 +72,7 @@ def convert_to_pihole(in_lines):
     
     out_lines = []
     for line in in_lines:
-        line = config['null_addr'] + " " + line
+        line = defaults['null_addr'] + " " + line
         out_lines.append(line)
     
     out_lines = "\n".join(out_lines)
@@ -106,6 +107,10 @@ def main():
     parser.add_argument("-v","--version"          , help="Show version and quit",action="store_true")
     parser.add_argument("-o","--output"           , help="Output file. default block_list.pi_hosts",type=str)
     args = parser.parse_args()
+    
+    # parse file header
+    global output_header
+    output_header = output_header.replace('+TITLE+',defaults['title'])
 
     ## Sanity checks, and variable proccessing
     if args.version == True:
